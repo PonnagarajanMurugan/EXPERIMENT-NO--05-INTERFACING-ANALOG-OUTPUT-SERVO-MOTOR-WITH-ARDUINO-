@@ -58,7 +58,7 @@ CIRCUIT DIAGRAM
  
  ![image](https://user-images.githubusercontent.com/36288975/163544618-6eb8a7b5-7f1a-428a-8d9f-fd899b145efb.png)
 
-### FIGURE 04 CIRCUIT DIAGRAM:
+### CIRCUIT DIAGRAM:
 ![Screenshot (93)](https://github.com/PonnagarajanMurugan/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/119476356/04c953b8-a339-44e5-a15c-481d6c201670)
 ### SCHEMATIC DIAGRAM:
 ![Screenshot (95)](https://github.com/PonnagarajanMurugan/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/119476356/28d99824-2ff2-4e1b-be94-d507341c4e05)
@@ -78,48 +78,84 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
-'''
 #include <Servo.h>
+
 Servo srl;
+
 int pos=0;
+
 int red=9;
+
 int green=8;
+
 void setup()
+
 {
+
   srl.attach(6);
+  
   Serial.begin(9600);
+  
   pinMode(red,OUTPUT);
+  
   pinMode(green,OUTPUT);
 }
+
 void loop()
+
 {
+
   for(pos=0;pos<=180;pos+=5)
-  {
-    srl.write(pos);
-    delay(1000);
-    Serial.println(pos);
-    if(pos>=120)
+  
+    {
+    
+     srl.write(pos);
+     
+     delay(1000);
+     
+     Serial.println(pos);
+     
+     if(pos>=120)
   	{
-    	digitalWrite(red,HIGH);
-    	delay(200);
-    	digitalWrite(red,LOW);
-    	delay(200);
+   
+   
+     digitalWrite(red,HIGH);
+    	
+     delay(200);
+    	
+     digitalWrite(red,LOW);
+    	
+     delay(200);
   	}
+   
   }
+  
+  
   for(pos=180;pos>=0;pos-=5)
+  
   {
+  
     srl.write(pos);
+    
     delay(1000);
+    
     Serial.println(pos);
+    
     if(pos<=100)
   	{
-    	digitalWrite(green,HIGH);
-    	delay(200);
-    	digitalWrite(green,LOW);
-    	delay(200);
+   
+   
+     digitalWrite(green,HIGH);
+    	
+     delay(200);
+    	
+     digitalWrite(green,LOW);
+    	
+     delay(200);
   	}
+   
   }
+  
 }
-'''
 ### RESULTS: 
 Arduino uno interfacing with servo motor is learned and angular position is controlled using PWM signal.
